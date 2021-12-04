@@ -194,6 +194,10 @@ function graph3(year) {
     obj.appendChild(newspan);
   };
 
+  var info =document.createElement("div");
+  info.innerHTML = "총발생자:"+(sum(year_case[year]))+"명<br>"+"최대 발생"+(max(year_case[year]))+"명";
+  info.setAttribute("Id","info");
+  obj.append(info);
 
 
 };
