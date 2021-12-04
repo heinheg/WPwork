@@ -1,0 +1,15 @@
+h1 {
+  text-align: center;
+  color: rgb(0, 247, 255);
+}
+body {
+  color: rgb(126, 126, 126);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+iframe.graph {
+  width: 1200px;
+  height: 1000px;
+  margin: 80px;
+  padding: 10px;
+}
