@@ -89,9 +89,11 @@ var nov_2021 = [1588, 2666, 2480, 2344, 2248, 2223,
   1759, 1713, 2424, 2520, 2368, 2323, 2418, 2006, 2125, 3184, 3290, 3034, 3212, 3114, 2827, 2698, 4114, 3938, 3899, 4067];
 var year_2020 = [jan_2020, feb_2020, mar_2020, apr_2020, may_2020, jun_2020, jul_2020, aug_2020, sep_2020, oct_2020, nov_2020, dec_2020];
 var year_2021 = [jan_2021, feb_2021, mar_2021, apr_2021, may_2021, jun_2021, jul_2021, aug_2021, sep_2021, oct_2021, nov_2021];
+
 var sum_year_2020 = mon_to_year(year_2020);
 var sum_year_2021 = mon_to_year(year_2021);
 var year_case = [sum_year_2020, sum_year_2021];
+var all_year=[sum(sum_year_2020),sum(sum_year_2021)]
 console.log(sum_year_2020);
 
 
@@ -115,6 +117,11 @@ function graph(mon) {
     newspan.style.height = "" + (casepercent[i] + 20) + "px"
     obj.appendChild(newspan);
   };
+  
+  var info =document.createElement("div");
+  info.innerHTML = "2020년"+(mon+1)+"월<br>총발생자:"+(sum_year_2020[mon])+"명<br>"+"최대 발생"+(max(year_2020[mon]))+"명";
+  info.setAttribute("Id","info");
+  obj.append(info);
 
   var news_parent = document.getElementById("newsparent");
   var remove_news = document.getElementById("news");
@@ -126,6 +133,7 @@ function graph(mon) {
   newsframe.setAttribute("target","_blank")
   newsframe.innerHTML ="2020년"+(mon+1)+"월 정보 페이지"
   news_parent.appendChild(newsframe);
+
 };
 
 function graph2(mon) {
@@ -149,6 +157,11 @@ function graph2(mon) {
     obj.appendChild(newspan);
   };
 
+  var info =document.createElement("div");
+  info.innerHTML = "2021년"+(mon+1)+"월<br>총발생자:"+(sum_year_2021[mon])+"명<br>"+"최대 발생"+(max(year_2021[mon]))+"명";
+  info.setAttribute("Id","info");
+  obj.append(info);
+
   var news_parent = document.getElementById("newsparent");
   var remove_news = document.getElementById("news");
   news_parent.removeChild(remove_news);
@@ -167,11 +180,12 @@ function graph3(year) {
   var obj = document.createElement("ul");
   obj.setAttribute("Id", "graphsection");
   parent.appendChild(obj);
+
   var caseg = year_case[year];
   var casepercent = make_percent(caseg);
   for (var i = 0; i < caseg.length; i++) {
     var newspan = document.createElement("li");
-    newspan.innerHTML = "" + i + "";
+    newspan.innerHTML = "" + (i+1) + "";
     newspan.setAttribute("title", caseg[i] + "명");
     newspan.setAttribute("class", "gra");
     newspan.style.backgroundColor = "skyblue";
@@ -179,5 +193,8 @@ function graph3(year) {
     newspan.style.height = "" + (casepercent[i] + 20) + "px"
     obj.appendChild(newspan);
   };
+
+
+
 };
 
