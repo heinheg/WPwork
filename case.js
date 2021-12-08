@@ -90,6 +90,7 @@ var nov_2021 = [1588, 2666, 2480, 2344, 2248, 2223,
 var year_2020 = [jan_2020, feb_2020, mar_2020, apr_2020, may_2020, jun_2020, jul_2020, aug_2020, sep_2020, oct_2020, nov_2020, dec_2020];
 var year_2021 = [jan_2021, feb_2021, mar_2021, apr_2021, may_2021, jun_2021, jul_2021, aug_2021, sep_2021, oct_2021, nov_2021];
 
+var yearlist=[2020,2021]
 var sum_year_2020 = mon_to_year(year_2020);
 var sum_year_2021 = mon_to_year(year_2021);
 var year_case = [sum_year_2020, sum_year_2021];
@@ -188,6 +189,9 @@ function graph3(year) {
     newspan.innerHTML = "" + (i+1) + "";
     newspan.setAttribute("title", caseg[i] + "명");
     newspan.setAttribute("class", "gra");
+    if (year===1) 
+    newspan.style.backgroundColor = "orange";
+    else if (year===0) 
     newspan.style.backgroundColor = "skyblue";
     newspan.style.left = "" + i * 50 + "px";
     newspan.style.height = "" + (casepercent[i] + 20) + "px"
@@ -199,6 +203,16 @@ function graph3(year) {
   info.setAttribute("Id","info");
   obj.append(info);
 
+  var news_parent = document.getElementById("newsparent");
+  var remove_news = document.getElementById("news");
+  news_parent.removeChild(remove_news);
+  var newsframe = document.createElement("a");
+  newsframe.setAttribute("Id", "news");
+  newsframe.setAttribute("class", "newspage");
+  newsframe.setAttribute("href", "http://ncov.mohw.go.kr/tcmBoardList.do?pageIndex=1&brdId=&brdGubun=&board_id=&search_item=1&search_content=" + yearlist[year] + "");
+  newsframe.setAttribute("target","_blank")
+  newsframe.innerHTML =""+yearlist[year]+"년 정보 페이지"
+  news_parent.appendChild(newsframe);
 
 };
 
