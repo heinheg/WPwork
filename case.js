@@ -7,6 +7,17 @@ function max(arr) {
   }
   return maxnum;
 };
+function maxpoint(arr) {
+  maxnum = 0;
+  var maxp=0;
+  for (var i = 0; i < arr.length; i++) {
+    if (maxnum < arr[i]) {
+      maxp=i;
+      maxnum = arr[i];
+    }
+  }
+  return maxp;
+};
 function min(arr) {
   minnum = 10000000
   for (var i = 0; i < arr.length; i++) {
@@ -121,7 +132,7 @@ function graph(mon) {
   };
   
   var info =document.createElement("div");
-  info.innerHTML = "2020년"+(mon+1)+"월<br>총발생자:"+(sum_year_2020[mon])+"명<br>"+"최대 발생"+(max(year_2020[mon]))+"명";
+  info.innerHTML = "2020년"+(mon+1)+"월<br>총발생자:"+(sum_year_2020[mon])+"명<br>"+"최대 발생"+(maxpoint(year_2020[mon])+1)+"일 "+(max(year_2020[mon]))+"명";
   info.setAttribute("Id","info");
   obj.append(info);
 
@@ -160,7 +171,7 @@ function graph2(mon) {
   };
 
   var info =document.createElement("div");
-  info.innerHTML = "2021년"+(mon+1)+"월<br>총발생자:"+(sum_year_2021[mon])+"명<br>"+"최대 발생"+(max(year_2021[mon]))+"명";
+  info.innerHTML = "2021년"+(mon+1)+"월<br>총발생자:"+(sum_year_2021[mon])+"명<br>"+"최대 발생"+(maxpoint(year_2021[mon])+1)+"일 "+(max(year_2021[mon]))+"명";
   info.setAttribute("Id","info");
   obj.append(info);
 
@@ -200,7 +211,7 @@ function graph3(year) {
   };
 
   var info =document.createElement("div");
-  info.innerHTML = "총발생자:"+(sum(year_case[year]))+"명<br>"+"최대 발생"+(max(year_case[year]))+"명";
+  info.innerHTML = "총발생자:"+(sum(year_case[year]))+"명<br>"+"최대 발생"+(maxpoint(year_case[year])+1)+"월 "+(max(year_case[year]))+"명";
   info.setAttribute("Id","info");
   obj.append(info);
 
